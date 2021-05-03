@@ -1,0 +1,12 @@
+/Users/caixianglin/Projects/ByteTest/ByteTest/bin/Debug/netcoreapp3.1/ByteTest.deps.json
+/Users/caixianglin/Projects/ByteTest/ByteTest/bin/Debug/netcoreapp3.1/ByteTest.runtimeconfig.json
+/Users/caixianglin/Projects/ByteTest/ByteTest/bin/Debug/netcoreapp3.1/ByteTest.runtimeconfig.dev.json
+/Users/caixianglin/Projects/ByteTest/ByteTest/bin/Debug/netcoreapp3.1/ByteTest.dll
+/Users/caixianglin/Projects/ByteTest/ByteTest/bin/Debug/netcoreapp3.1/ByteTest.pdb
+/Users/caixianglin/Projects/ByteTest/ByteTest/obj/Debug/netcoreapp3.1/ByteTest.csprojAssemblyReference.cache
+/Users/caixianglin/Projects/ByteTest/ByteTest/obj/Debug/netcoreapp3.1/ByteTest.AssemblyInfoInputs.cache
+/Users/caixianglin/Projects/ByteTest/ByteTest/obj/Debug/netcoreapp3.1/ByteTest.AssemblyInfo.cs
+/Users/caixianglin/Projects/ByteTest/ByteTest/obj/Debug/netcoreapp3.1/ByteTest.csproj.CoreCompileInputs.cache
+/Users/caixianglin/Projects/ByteTest/ByteTest/obj/Debug/netcoreapp3.1/ByteTest.dll
+/Users/caixianglin/Projects/ByteTest/ByteTest/obj/Debug/netcoreapp3.1/ByteTest.pdb
+/Users/caixianglin/Projects/ByteTest/ByteTest/obj/Debug/netcoreapp3.1/ByteTest.genruntimeconfig.cache
