@@ -1,0 +1,24 @@
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+} 
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 15px;
+}
+
+.footer {
+    padding: 10px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+@media screen and (max-width:600px) {
+    .column{   
+        width: 100%;
+        padding: 0;
+    }
+}

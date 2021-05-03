@@ -1,0 +1,43 @@
+/* Preset */
+*{
+     box-sizing: border-box;
+}
+
+.body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Menu */
+.topnav {
+     overflow: hidden;
+     background-color: rgb(12, 13, 14);
+}
+ 
+.topnav a {
+     float: left;
+     display: block;
+     color: #c1e2f1;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+}
+
+.topnav a:hover {
+     /* 進入時事件 */
+     background-color: #ddd;
+     color: black;
+}
+
+/* Article */
+.article{
+     text-indent: 2em;
+} 
+
+/* RWD */
+@media screen and (max-width:600px) {
+     .topnav a {
+          float: none;
+          width: 100%;
+     }
+}
