@@ -38,4 +38,3 @@ C:\GIT\Project\MG100\MG100\obj\Debug\MG100.csproj.CoreCompileInputs.cache
 C:\GIT\Project\MG100\MG100\obj\Debug\MG100.csproj.CopyComplete
 C:\GIT\Project\MG100\MG100\obj\Debug\MG100.exe
 C:\GIT\Project\MG100\MG100\obj\Debug\MG100.pdb
-C:\GIT\Project\MG100\MG100\obj\Debug\MG100.csprojAssemblyReference.cache

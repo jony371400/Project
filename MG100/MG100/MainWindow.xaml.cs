@@ -21,7 +21,7 @@ namespace MG100
     public partial class MainWindow : Window,INotifyPropertyChanged
     {
         SerialPort serialPort = new SerialPort();
-        Data data = new Data();
+        CmdData Cmd = new CmdData();
         LogData Log = new LogData();
 
         public MainWindow()
@@ -29,12 +29,12 @@ namespace MG100
             InitializeComponent();
             DataContext = this;
 
-            //通訊
+            //Communication
             ports = SerialPort.GetPortNames();
             serialPort.DataReceived += serialPort_DataReceived;
         }
 
-        #region 更新
+        #region Update
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged(string propertyName)
         {
@@ -43,7 +43,7 @@ namespace MG100
         }
         #endregion
         
-        #region 屬性
+        #region Property
         bool IsConnected = false;
 
         string[] ports = null;
@@ -88,7 +88,7 @@ namespace MG100
                 combobox.SelectedIndex = 0;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Connect_Click(object sender, RoutedEventArgs e)
         {
             if (ports == null)
                 return;
@@ -110,7 +110,7 @@ namespace MG100
             }
         }
 
-        private void CmdBtnClick(object sender, RoutedEventArgs e)
+        private void Cmd_Click(object sender, RoutedEventArgs e)
         {
             btnStart.Background = Brushes.LightGray;
             btnStop.Background = Brushes.LightGray;
@@ -140,7 +140,7 @@ namespace MG100
             }
         }      
 
-        private void btnClickDN(object sender, MouseButtonEventArgs e)
+        private void DN_Click(object sender, MouseButtonEventArgs e)
         {
             if (sender == btnUP)
             {
@@ -148,9 +148,9 @@ namespace MG100
                 try
                 {
                     byte[] buf = new byte[1];
-                    buf[0] = data.Front[0];
+                    buf[0] = Cmd.Front[0];
                     if (IsConnected)
-                        serialPort.Write(data.Front, 0, data.Front.Length);
+                        serialPort.Write(Cmd.Front, 0, Cmd.Front.Length);
                 }
                 catch { }
             }
@@ -160,15 +160,15 @@ namespace MG100
                 try
                 {
                     byte[] buf = new byte[1];
-                    buf[0] = data.Back[0];
+                    buf[0] = Cmd.Back[0];
                     if (IsConnected)
-                        serialPort.Write(data.Back, 0, data.Back.Length);
+                        serialPort.Write(Cmd.Back, 0, Cmd.Back.Length);
                 }
                 catch { }
             }
         }
 
-        private void btnClickUP(object sender, MouseButtonEventArgs e)
+        private void UP_Click(object sender, MouseButtonEventArgs e)
         {
             if (sender == btnUP)
             {
@@ -206,7 +206,7 @@ namespace MG100
         }
         #endregion
 
-        #region 效果
+        #region Rendering
         private void btnMouseMoveIn(object sender, MouseEventArgs e)
         {
             if (sender == btnStart)

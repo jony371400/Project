@@ -187,7 +187,7 @@ namespace MG100 {
             this.btnConnect = ((System.Windows.Controls.Button)(target));
             
             #line 31 "..\..\MainWindow.xaml"
-            this.btnConnect.Click += new System.Windows.RoutedEventHandler(this.Button_Click);
+            this.btnConnect.Click += new System.Windows.RoutedEventHandler(this.Connect_Click);
             
             #line default
             #line hidden

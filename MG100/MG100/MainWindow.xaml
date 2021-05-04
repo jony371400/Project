@@ -28,7 +28,7 @@
 
             <TextBlock Grid.Row="1" Text="Port : "    FontSize="28" FontFamily="Impact" Margin="25,0"  VerticalAlignment="Center"></TextBlock>
             <ComboBox  Grid.Row="2" Name="combobox"   FontSize="26" FontFamily="Impact" Margin="5,0" Width="130" Height="60" ItemsSource="{Binding Ports}" VerticalContentAlignment="Center"/>
-            <Button    Grid.Row="3" Name="btnConnect" FontSize="28" FontFamily="Impact" Margin="5,0" Width="130" Height="60" Content="Connect" Click="Button_Click"/>
+            <Button    Grid.Row="3" Name="btnConnect" FontSize="28" FontFamily="Impact" Margin="5,0" Width="130" Height="60" Content="Connect" Click="Connect_Click"/>
 
             <!--="{StaticResource MaterialDesignRaisedButton}"
                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
@@ -67,8 +67,8 @@
                         <ComboBoxItem>A1</ComboBoxItem>
                     </ComboBox>
 
-                    <Button Grid.Column="3" Grid.Row="1" Content="Start" FontSize="26" Height="40" Margin="5,0" Click="CmdBtnClick" Name="btnStart" Background="LightGray" MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut"></Button>
-                    <Button Grid.Column="4" Grid.Row="1" Content="Stop"  FontSize="26" Height="40" Margin="5,0" Click="CmdBtnClick" Name="btnStop"  Background="LightGreen" MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut"></Button>
+                    <Button Grid.Column="3" Grid.Row="1" Content="Start" FontSize="26" Height="40" Margin="5,0" Click="Cmd_Click" Name="btnStart" Background="LightGray"  MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut"></Button>
+                    <Button Grid.Column="4" Grid.Row="1" Content="Stop"  FontSize="26" Height="40" Margin="5,0" Click="Cmd_Click" Name="btnStop"  Background="LightGreen" MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut"></Button>
                 </Grid>
 
             </GroupBox>
@@ -84,8 +84,8 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Row="0" Height="50" Content="Forward" FontSize="26" Name="btnUP" PreviewMouseDown="btnClickDN" PreviewMouseUp="btnClickUP" MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut" Background="LightGray"></Button>
-                    <Button Grid.Row="1" Height="50" Content="Backward" FontSize="26" Name="btnDN" PreviewMouseDown="btnClickDN" PreviewMouseUp="btnClickUP" MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut" Background="LightGray"></Button>
+                    <Button Grid.Row="0" Height="50" Content="Forward"  FontSize="26" Name="btnUP" PreviewMouseDown="DN_Click" PreviewMouseUp="UP_Click" MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut" Background="LightGray"></Button>
+                    <Button Grid.Row="1" Height="50" Content="Backward" FontSize="26" Name="btnDN" PreviewMouseDown="DN_Click" PreviewMouseUp="UP_Click" MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut" Background="LightGray"></Button>
                     <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding ResultStatus}" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
                 </Grid>
             </GroupBox>
