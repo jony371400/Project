@@ -5,10 +5,6 @@
         xmlns:local="clr-namespace:MG100"
         Title="MG100-User Interface" Height="720" Width="960" Closed="Window_Closed" Loaded="Window_Loaded" >
 
-    <Window.Resources>
-       
-    </Window.Resources>
-
     <Grid Background="Gray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>

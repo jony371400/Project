@@ -10,3 +10,16 @@
 /Users/caixianglin/Projects/ByteTest/ByteTest/obj/Debug/netcoreapp3.1/ByteTest.dll
 /Users/caixianglin/Projects/ByteTest/ByteTest/obj/Debug/netcoreapp3.1/ByteTest.pdb
 /Users/caixianglin/Projects/ByteTest/ByteTest/obj/Debug/netcoreapp3.1/ByteTest.genruntimeconfig.cache
+C:\GIT\Project\ByteTest\ByteTest\bin\Debug\netcoreapp3.1\ByteTest.exe
+C:\GIT\Project\ByteTest\ByteTest\bin\Debug\netcoreapp3.1\ByteTest.deps.json
+C:\GIT\Project\ByteTest\ByteTest\bin\Debug\netcoreapp3.1\ByteTest.runtimeconfig.json
+C:\GIT\Project\ByteTest\ByteTest\bin\Debug\netcoreapp3.1\ByteTest.runtimeconfig.dev.json
+C:\GIT\Project\ByteTest\ByteTest\bin\Debug\netcoreapp3.1\ByteTest.dll
+C:\GIT\Project\ByteTest\ByteTest\bin\Debug\netcoreapp3.1\ByteTest.pdb
+C:\GIT\Project\ByteTest\ByteTest\obj\Debug\netcoreapp3.1\ByteTest.csprojAssemblyReference.cache
+C:\GIT\Project\ByteTest\ByteTest\obj\Debug\netcoreapp3.1\ByteTest.AssemblyInfoInputs.cache
+C:\GIT\Project\ByteTest\ByteTest\obj\Debug\netcoreapp3.1\ByteTest.AssemblyInfo.cs
+C:\GIT\Project\ByteTest\ByteTest\obj\Debug\netcoreapp3.1\ByteTest.csproj.CoreCompileInputs.cache
+C:\GIT\Project\ByteTest\ByteTest\obj\Debug\netcoreapp3.1\ByteTest.dll
+C:\GIT\Project\ByteTest\ByteTest\obj\Debug\netcoreapp3.1\ByteTest.pdb
+C:\GIT\Project\ByteTest\ByteTest\obj\Debug\netcoreapp3.1\ByteTest.genruntimeconfig.cache

@@ -60,7 +60,7 @@ namespace ByteTest
         public List<byte[]> Code = new List<byte[]>();
 
         //連續往前
-        byte[] Forward = { 0x4A, 0x01, 0x09, 0x23, 0x05, 0x23, 0x01, 0x44, 0x01 };
+        byte[] Forward = { 0x4A, 0x01, 0x09, 0x23, 0x05, 0x23, 0x01, 0x44, 0x02 };
         //連續往後
         byte[] Backward = { 0x4A, 0x01, 0x09, 0x23, 0x06, 0x23, 0x01, 0x44, 0x01 };
 
@@ -81,10 +81,12 @@ namespace ByteTest
         byte[] MW = { 0x4A, 0x01, 0x09, 0x23, 0x05, 0x23, 0x01, 0x44, 0x01 };
 
         //暫停
+        public byte[] EmgStop = { 0X4a, 0X01, 0X07, 0X23, 0X02, 0X44, 0X29 };
+        public byte[] CarStop1 = { 0X4a, 0X01, 0X07, 0X23, 0X0E, 0X44, 0X25 };
+        public byte[] CarStop2 = { 0X4a, 0X01, 0X07, 0X23, 0X0F, 0X44, 0X24 };
 
         //開啟IR
         //關閉IR
-
         //單動往前
         //單動往後        
     }

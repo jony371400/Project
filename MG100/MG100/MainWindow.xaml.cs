@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,8 @@ namespace MG100
     {
         SerialPort serialPort = new SerialPort();
         Data data = new Data();
+        string Road = "";
+        List<string> AgvMsg = new List<string>();
 
         public MainWindow()
         {
@@ -30,6 +33,9 @@ namespace MG100
             var x = data.Right;
 
             serialPort.DataReceived += serialPort_DataReceived;
+            string Env = Environment.CurrentDirectory;
+            string Time = DateTime.Now.ToString("MMddHHmm");
+            Road = Env + "\\Log\\" + Time + ".txt";
         }
 
         #region 更新
@@ -74,6 +80,22 @@ namespace MG100
         #endregion
 
         #region Event
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            serialPort.Close();
+
+            StreamWriter sw = new StreamWriter(Road);
+            foreach (string msg in AgvMsg)
+                sw.WriteLine(msg);
+            sw.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ports != null)
+                combobox.SelectedIndex = 0;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (ports == null)
@@ -94,17 +116,6 @@ namespace MG100
                 Result = "Fail";
                 Sensor.Background = Brushes.Red;
             }
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            serialPort.Close();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ports != null)
-                combobox.SelectedIndex = 0;
         }
 
         private void CmdBtnClick(object sender, RoutedEventArgs e)
@@ -199,6 +210,7 @@ namespace MG100
                 str += ",";
             }
             ResultStatus = str;
+            AgvMsg.Add(ResultStatus);
         }
         #endregion
 

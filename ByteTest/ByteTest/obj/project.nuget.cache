@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tzoa4d7wYMgUsZ+bHSq7XK4W380DqjNndE1SEsu7P/BZ2LukpHH/AjL4aHc2dY4ACfhWLGQ33gVDQ2mtYBgXUg==",
+  "dgSpecHash": "mTLuqKfQ2bjMNjJK6q2YAbg42yZBEeQtj2uwvALgm1RShkWiS5C6vI2C5i9aKFdFez243PfGI+SVjwSBgZPBag==",
   "success": true,
-  "projectFilePath": "/Users/caixianglin/Projects/ByteTest/ByteTest/ByteTest.csproj",
+  "projectFilePath": "C:\\GIT\\Project\\ByteTest\\ByteTest\\ByteTest.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
