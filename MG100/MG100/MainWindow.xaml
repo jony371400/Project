@@ -1,20 +1,12 @@
 ﻿<Window x:Class="MG100.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"    
-        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:local="clr-namespace:MG100"
         Title="MG100-User Interface" Height="720" Width="960" Closed="Window_Closed" Loaded="Window_Loaded" >
 
     <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.grey.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+       
     </Window.Resources>
 
     <Grid Background="Gray">
@@ -40,10 +32,11 @@
 
             <TextBlock Grid.Row="1" Text="Port : "    FontSize="28" FontFamily="Impact" Margin="25,0"  VerticalAlignment="Center"></TextBlock>
             <ComboBox  Grid.Row="2" Name="combobox"   FontSize="26" FontFamily="Impact" Margin="5,0" Width="130" Height="60" ItemsSource="{Binding Ports}" VerticalContentAlignment="Center"/>
-            <Button    Grid.Row="3" Name="btnConnect" FontSize="28" FontFamily="Impact" Margin="5,0" Width="130" Height="60" Content="Connect" Click="Button_Click"
-                       Style="{StaticResource MaterialDesignRaisedButton}"
+            <Button    Grid.Row="3" Name="btnConnect" FontSize="28" FontFamily="Impact" Margin="5,0" Width="130" Height="60" Content="Connect" Click="Button_Click"/>
+
+            <!--="{StaticResource MaterialDesignRaisedButton}"
                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                       materialDesign:ButtonProgressAssist.IsIndeterminate="True"  ></Button>
+                       materialDesign:ButtonProgressAssist.IsIndeterminate="True"  ></Button>-->
         </Grid>
 
         <Grid Grid.Column="1" Background="LightGray" Margin="5">

@@ -11,10 +11,11 @@ namespace MG100
         //Music
         public byte[] MP3_34 = { 0x4a, 0x01, 0x07, 0x40, 0x34, 0x44, 0x7c };
         public byte[] MP3_27 = { 0x4a, 0x01, 0x07, 0x40, 0x27, 0x44, 0x6f };
-        
+
         //Control
-        public byte[] Stop1 = { 0X4a, 0X01, 0X07, 0X23, 0X0E, 0X44, 0X25 };
-        public byte[] Stop2 = { 0X4a, 0X01, 0X07, 0X23, 0X0F, 0X44, 0X24 };
+        public byte[] EmgStop = { 0X4a, 0X01, 0X07, 0X23, 0X02, 0X44, 0X29 };
+        public byte[] CarStop1 = { 0X4a, 0X01, 0X07, 0X23, 0X0E, 0X44, 0X25 }; 
+        public byte[] CarStop2 = { 0X4a, 0X01, 0X07, 0X23, 0X0F, 0X44, 0X24 };
         public byte[] Back = { 0x4a, 0x01, 0x09, 0x23, 0x06, 0x23, 0x01, 0X44, 0X01 };
         public byte[] Front = { 0x4a, 0x01, 0x09, 0x23, 0x05, 0x23, 0x01, 0X44, 0X02 };
         public byte[] Right = { 0x4a, 0x01, 0x09, 0x23, 0x11, 0x23, 0x11, 0x44, 0x06 };
