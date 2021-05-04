@@ -22,7 +22,7 @@ namespace MG100
     {
         SerialPort serialPort = new SerialPort();
         Data data = new Data();
-        LogData Log = null;
+        LogData Log = new LogData();
 
         public MainWindow()
         {
@@ -32,12 +32,6 @@ namespace MG100
             //通訊
             ports = SerialPort.GetPortNames();
             serialPort.DataReceived += serialPort_DataReceived;
-
-            //存檔
-            string Env = Environment.CurrentDirectory;
-            string Time = DateTime.Now.ToString("MMddHHmm");
-            string Road = Env + "\\Log\\" + Time + ".txt";
-            Log = new LogData(Road);
         }
 
         #region 更新
