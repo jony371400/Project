@@ -22,20 +22,22 @@ namespace MG100
     {
         SerialPort serialPort = new SerialPort();
         Data data = new Data();
-        string Road = "";
-        List<string> AgvMsg = new List<string>();
+        LogData Log = null;
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
-            ports = SerialPort.GetPortNames();
-            var x = data.Right;
 
+            //通訊
+            ports = SerialPort.GetPortNames();
             serialPort.DataReceived += serialPort_DataReceived;
+
+            //存檔
             string Env = Environment.CurrentDirectory;
             string Time = DateTime.Now.ToString("MMddHHmm");
-            Road = Env + "\\Log\\" + Time + ".txt";
+            string Road = Env + "\\Log\\" + Time + ".txt";
+            Log = new LogData(Road);
         }
 
         #region 更新
@@ -83,11 +85,7 @@ namespace MG100
         private void Window_Closed(object sender, EventArgs e)
         {
             serialPort.Close();
-
-            StreamWriter sw = new StreamWriter(Road);
-            foreach (string msg in AgvMsg)
-                sw.WriteLine(msg);
-            sw.Close();
+            Log.SaveLog();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -210,7 +208,7 @@ namespace MG100
                 str += ",";
             }
             ResultStatus = str;
-            AgvMsg.Add(ResultStatus);
+            Log.AgvMsg.Add(ResultStatus);
         }
         #endregion
 
