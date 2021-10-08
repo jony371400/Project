@@ -18,20 +18,22 @@ using System.IO.Ports;
 
 namespace MG100
 {
-    public partial class MainWindow : Window,INotifyPropertyChanged
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        SerialPort serialPort = new SerialPort();
-        CmdData Cmd = new CmdData();
-        LogData Log = new LogData();
+        LogData Log = null;
+        Connection Connect = null;
+        CmdData Cmd = null;
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
 
-            //Communication
-            ports = SerialPort.GetPortNames();
-            serialPort.DataReceived += serialPort_DataReceived;
+            Log = new LogData();
+            Cmd = new CmdData();
+            Connect = new Connection(Log);
+            Ports = Connect.Ports;
+            Connect.Notice += Notice;
         }
 
         #region Update
@@ -42,17 +44,11 @@ namespace MG100
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-        
+
         #region Property
         bool IsConnected = false;
 
-        string[] ports = null;
-        public string[] Ports
-        {
-            get { return ports; }
-        }
-
-        string result = "Status";
+        string result = "Off-Line";
         public string Result
         {
             get { return result; }
@@ -73,56 +69,77 @@ namespace MG100
                 NotifyPropertyChanged("ResultStatus");
             }
         }
+
+        string[] ports = null;
+        public string[] Ports
+        {
+            get { return ports; }
+            set { ports = value; }
+        }
+        #endregion
+
+        #region Notice
+        void Notice()
+        {
+            ResultStatus = Connect.ResultStatus;
+            Result = Connect.Result;
+            IsConnected = Connect.IsConnected;
+
+            if (Connect.IsConnected == false)
+                btnConnect.Background = Brushes.LightGray;
+            else
+                btnConnect.Background = Brushes.LightGreen;
+        }
         #endregion
 
         #region Event
         private void Window_Closed(object sender, EventArgs e)
         {
-            serialPort.Close();
+            Connect.Close();
             Log.SaveLog();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (ports != null)
+            if (Connect.Ports != null)
                 combobox.SelectedIndex = 0;
+            btnCannelConnect.IsEnabled = false;
         }
 
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
-            if (ports == null)
-                return;
-            try
+            if (sender == btnConnect)
             {
-                serialPort.PortName = ports[combobox.SelectedIndex];
-                serialPort.BaudRate = 9600;
-                serialPort.DataBits = 8;
-                serialPort.StopBits = StopBits.One;
-                serialPort.Open();
-                Result = "Success";
-                Sensor.Background = Brushes.LightGreen;
-                IsConnected = true;
+                if (Connect.IsConnected == false)
+                    Connect.Connect(combobox.SelectedIndex);
+
+                btnConnect.IsEnabled = false;
+                btnCannelConnect.IsEnabled = true;
+                Log.AgvMsg.Add("Connect");
             }
-            catch
+            else if (sender == btnCannelConnect)
             {
-                Result = "Fail";
-                Sensor.Background = Brushes.Red;
+                Connect.Close();
+                btnConnect.IsEnabled = true;
+                btnCannelConnect.IsEnabled = false;
+                Log.AgvMsg.Add("DisConnect");
             }
         }
 
+        //暫不啟用
         private void Cmd_Click(object sender, RoutedEventArgs e)
         {
             btnStart.Background = Brushes.LightGray;
             btnStop.Background = Brushes.LightGray;
+
             if (sender == btnStart)
             {
                 btnStart.Background = Brushes.LightGreen;
                 try
                 {
                     byte[] buf = new byte[1];
-                    //buf[0] = brightness;
-                    if (IsConnected)
-                        serialPort.Write(buf, 0, 1);
+                    //if (IsConnected)
+                    //    serialPort.Write(buf, 0, 1);
                 }
                 catch { }
             }
@@ -132,77 +149,36 @@ namespace MG100
                 try
                 {
                     byte[] buf = new byte[1];
-                    //buf[0] = brightness;
-                    if (IsConnected)
-                        serialPort.Write(buf, 0, 1);
-                }
-                catch { }
-            }
-        }      
-
-        private void DN_Click(object sender, MouseButtonEventArgs e)
-        {
-            if (sender == btnUP)
-            {
-                btnUP.Background = Brushes.LightGreen;
-                try
-                {
-                    byte[] buf = new byte[1];
-                    buf[0] = Cmd.Front[0];
-                    if (IsConnected)
-                        serialPort.Write(Cmd.Front, 0, Cmd.Front.Length);
-                }
-                catch { }
-            }
-            else if (sender == btnDN)
-            {
-                btnDN.Background = Brushes.LightGreen;
-                try
-                {
-                    byte[] buf = new byte[1];
-                    buf[0] = Cmd.Back[0];
-                    if (IsConnected)
-                        serialPort.Write(Cmd.Back, 0, Cmd.Back.Length);
+                    //if (IsConnected)
+                    //    serialPort.Write(buf, 0, 1);
                 }
                 catch { }
             }
         }
 
-        private void UP_Click(object sender, MouseButtonEventArgs e)
-        {
-            if (sender == btnUP)
-            {
-                btnUP.Background = Brushes.LightGray;                
-            }
-            else if (sender == btnDN)
-            {
-                btnDN.Background = Brushes.LightGray;
-            }
-            //try
-            //{
-            //    byte[] buf = new byte[1];
-            //    buf[0] = data.Stop1[0];
-            //    if (IsConnected)
-            //        serialPort.Write(buf, 0, 1);
-            //}
-            //catch { }
-        }
+        //暫不啟用
+        private void DN_Click(object sender, MouseButtonEventArgs e) { }
 
-        private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            SerialPort sp = (SerialPort)sender;
-            Byte[] buffer = new Byte[1024];
-            int Len = sp.Read(buffer, 0,buffer.Length);
-            Array.Resize(ref buffer, Len);
+        //暫不啟用
+        private void UP_Click(object sender, MouseButtonEventArgs e) { }
 
-            string str = "";
-            foreach(Byte b in buffer)
+        private void Control_Click(object sender, RoutedEventArgs e)
+        {
+            btnFront.Background = Brushes.LightGray;
+            btnBack.Background = Brushes.LightGray;
+
+            if (sender == btnFront)
             {
-                str += b.ToString("X2");
-                str += ",";
+                btnFront.Background = Brushes.LightGreen;
+                Connect.Command(Cmd.Test, Cmd.Test.Length);
+                Log.AgvMsg.Add("Front DN");
             }
-            ResultStatus = str;
-            Log.AgvMsg.Add(ResultStatus);
+            else if (sender == btnBack)
+            {
+                btnBack.Background = Brushes.LightGreen;
+                Connect.Command(Cmd.Test, Cmd.Test.Length);
+                Log.AgvMsg.Add("Back DN");
+            }
         }
         #endregion
 
@@ -213,10 +189,10 @@ namespace MG100
                 btnStart.FontSize = 30;
             else if (sender == btnStop)
                 btnStop.FontSize = 30;
-            else if (sender == btnUP)
-                btnUP.FontSize = 30;
-            else if (sender == btnDN)
-                btnDN.FontSize = 30;
+            else if (sender == btnFront)
+                btnFront.FontSize = 30;
+            else if (sender == btnBack)
+                btnBack.FontSize = 30;
         }
 
         private void btnMouseMoveOut(object sender, MouseEventArgs e)
@@ -225,11 +201,12 @@ namespace MG100
                 btnStart.FontSize = 26;
             else if (sender == btnStop)
                 btnStop.FontSize = 26;
-            else if (sender == btnUP)
-                btnUP.FontSize = 26;
-            else if (sender == btnDN)
-                btnDN.FontSize = 26;
+            else if (sender == btnFront)
+                btnFront.FontSize = 26;
+            else if (sender == btnBack)
+                btnBack.FontSize = 26;
         }
         #endregion
+
     }
 }
