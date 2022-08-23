@@ -2,5 +2,6 @@
 ```
 Have Fun
 ```
-![Image](https://github.com/jony371400/Project-ModernUI-App/blob/main/Dashboard-App/UI.png)
+
+![Image](https://github.com/jony371400/Project-MG-Series/blob/master/MG100/UI.png)
 
