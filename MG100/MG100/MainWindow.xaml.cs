@@ -153,6 +153,27 @@ namespace MG100
                     //    serialPort.Write(buf, 0, 1);
                 }
                 catch { }
+            }else if (sender == btnRight)
+            {
+                btnStart.Background = Brushes.LightGreen;
+                try
+                {
+                    byte[] buf = new byte[1];
+                    //if (IsConnected)
+                    //    serialPort.Write(buf, 0, 1);
+                }
+                catch { }
+            }
+            else if (sender == btnLeft)
+            {
+                btnStop.Background = Brushes.LightGreen;
+                try
+                {
+                    byte[] buf = new byte[1];
+                    //if (IsConnected)
+                    //    serialPort.Write(buf, 0, 1);
+                }
+                catch { }
             }
         }
 

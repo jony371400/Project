@@ -109,12 +109,21 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Button Grid.Row="0" Height="50" Content="Forward"    FontSize="26" Name="btnFront" Background="LightGray"
-                                    Click="Control_Click"
+                            <Button Grid.Row="0" Height="50" Content="Forward" FontSize="26" Name="btnFront" Background="LightGray"
+                                    Click="Control_Click" Margin="10"
                                     PreviewMouseDown="DN_Click" PreviewMouseUp="UP_Click" 
                                     MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut"  ></Button>
                             <Button Grid.Row="1" Height="50" Content="Backward" FontSize="26" Name="btnBack"  Background="LightGray"
-                                    Click="Control_Click"
+                                    Click="Control_Click" Margin="10"
+                                    PreviewMouseDown="DN_Click" PreviewMouseUp="UP_Click" 
+                                    MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut" ></Button>
+
+                            <Button Grid.Row="0" Grid.Column="1" Height="50" Content="Right" FontSize="26" Name="btnRight" Background="LightGray"
+                                    Click="Control_Click" Margin="10"
+                                    PreviewMouseDown="DN_Click" PreviewMouseUp="UP_Click" 
+                                    MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut"  ></Button>
+                            <Button Grid.Row="1" Grid.Column="1" Height="50" Content="Left" FontSize="26" Name="btnLeft"  Background="LightGray"
+                                    Click="Control_Click" Margin="10"
                                     PreviewMouseDown="DN_Click" PreviewMouseUp="UP_Click" 
                                     MouseMove="btnMouseMoveIn" MouseLeave="btnMouseMoveOut" ></Button>
                         </Grid>
